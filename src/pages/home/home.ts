@@ -8,39 +8,54 @@ import { NavController, AlertController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
- contacts =" Constacts Application ";
- contactsImg="../../assets/imgs/contactsImg.jpg";
- userName= "";
- contactsArray=[
-  {Name:"Ahmed", id:1},
-  {Name:"samir", id:2},
-  {Name:"Ali", id:3}
+ weatherApp =" Constacts Application ";
+ flag="/assets/imgs/contactsImg.jpg";
+ countriesArray=[
+  {"country": "bahrain", "city": "manama" },
+  {"country": "FL", "city": "miami"},
+  {"country": "KSA", "city": "riyad"  },
+  {"country": "Egypt", "city": "Cairo"}
  ];
+ countRec:number;
+
   constructor(public navCtrl: NavController,
     private alertCtrl:AlertController) {
   }
-  aboutContacts(){
+  aboutApp(){
     this.navCtrl.push(AboutPage);
   }
-  addContact(){
-    let addCte=this.alertCtrl.create({
-      title:"add Contact",
-      message :"Enter a New Contact Here",
-      inputs:[
-        {type:"text",
-        name:"contactEntry"}
-      ],
-      buttons:[
+
+  addLocation() {
+    let addCte = this.alertCtrl.create({
+      title: "Location",
+      message: "Enter a New Location",
+      inputs: [
         {
-          text:"Cancel"
+          type: "text",
+          name: "City",
+          placeholder: "City"
         },
         {
-          text:"Add",
-          handler:(newContact)=>{
-            this.contactsArray.push(
-              {id:this.contactsArray.length,
-              "Name":newContact.contactEntry}
-            )
+          type: "text",
+          name: "Country",
+          placeholder:"Country"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel"
+        },
+        {
+          text: "Add",
+          handler: (newCountry) => {
+            this.countriesArray.push(
+              {
+                "country": newCountry.Country,
+                "city": newCountry.City
+              }
+            );
+            this.countRec= this.countriesArray.length ;
+
           }
         }
       ]
