@@ -11,7 +11,7 @@ import { DetailsPage } from '../details/details';
 export class HomePage implements OnInit {
   reorderT = true;
   weatherApp = " Weather Application ";
-  flag = "/assets/imgs/flag.jpg";
+  flag = "/assets/imgs/flag.png";
   countries: any;
   countRec:number;
   constructor(public navCtrl: NavController,
