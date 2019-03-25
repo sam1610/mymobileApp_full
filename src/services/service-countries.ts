@@ -11,7 +11,8 @@ export class ServiceCountries {
       console.log(this.ApIurl);
     }
   getWeather(item):Observable<any>
-  {
+
+  {  console.log(item);
     console.log(this.ApIurl + '/'+item.country +'/' +item.city +'.json');
     
     return this.http.get(this.ApIurl + '/'+item.country +'/' +item.city +'.json');
